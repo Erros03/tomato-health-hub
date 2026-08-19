@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ClientOnly } from "@tanstack/react-router";
-import {
-  IonBadge,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonCol,
-  IonGrid,
-  IonRow,
-} from "@ionic/react";
+import { createFileRoute, ClientOnly } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { useBlightStream, type HardwareState } from "@/lib/useBlightStream";
 
@@ -35,10 +23,22 @@ export const Route = createFileRoute("/system")({
   component: SystemPage,
 });
 
-const STATE_META: Record<HardwareState, { label: string; color: string; hex: string }> = {
-  online: { label: "Online / Active", color: "success", hex: "#2e7d32" },
-  standby: { label: "Standby", color: "warning", hex: "#f6b93b" },
-  offline: { label: "Offline", color: "danger", hex: "#e53935" },
+const STATE_META: Record<HardwareState, { label: string; badge: string; dot: string }> = {
+  online: {
+    label: "Online / Active",
+    badge: "border-success/30 bg-success/10 text-success",
+    dot: "bg-success",
+  },
+  standby: {
+    label: "Standby",
+    badge: "border-warning/40 bg-warning/15 text-warning",
+    dot: "bg-warning",
+  },
+  offline: {
+    label: "Offline",
+    badge: "border-primary/30 bg-primary/10 text-primary",
+    dot: "bg-primary",
+  },
 };
 
 function SystemPage() {
@@ -54,40 +54,55 @@ function SystemView() {
   const online = hardware.filter((h) => h.state === "online").length;
 
   return (
-    <AppShell title="System Status">
-      <h2 className="bd-section-title">Hardware Health</h2>
-      <p className="bd-metric-label" style={{ margin: "0 8px 8px" }}>
-        {online} of {hardware.length} components active
-      </p>
-      <IonGrid>
-        <IonRow>
+    <AppShell title="System Status" subtitle="IoT hardware health across the sorting line">
+      <div className="space-y-5 sm:space-y-6">
+        <section className="card-surface grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 p-4 sm:p-6">
+          <div className="min-w-0">
+            <h2 className="text-base font-bold tracking-tight sm:text-lg">Hardware Health</h2>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              {online} of {hardware.length} components active
+            </p>
+          </div>
+          <p className="shrink-0 text-3xl font-extrabold tabular-nums sm:text-4xl">
+            {hardware.length ? Math.round((online / hardware.length) * 100) : 0}%
+          </p>
+        </section>
+
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {hardware.map((c) => {
             const meta = STATE_META[c.state];
             return (
-              <IonCol size="12" sizeMd="6" sizeLg="4" key={c.key}>
-                <IonCard className={`bd-status-card ${c.state}`}>
-                  <IonCardHeader>
-                    <IonCardSubtitle>
-                      <span className="bd-dot" style={{ backgroundColor: meta.hex }} />
-                      {c.detail}
-                    </IonCardSubtitle>
-                    <IonCardTitle style={{ fontSize: "1.1rem" }}>{c.name}</IonCardTitle>
-                  </IonCardHeader>
-                  <IonCardContent>
-                    <IonBadge color={meta.color}>{meta.label}</IonBadge>
-                  </IonCardContent>
-                </IonCard>
-              </IonCol>
+              <article key={c.key} className="card-surface min-w-0 p-4 sm:p-5">
+                <div className="flex items-center gap-2">
+                  <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${meta.dot}`} />
+                  <p className="min-w-0 truncate text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {c.detail}
+                  </p>
+                </div>
+                <h3 className="mt-2 text-base font-bold tracking-tight">{c.name}</h3>
+                <span
+                  className={`mt-3 inline-flex rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-wide ${meta.badge}`}
+                >
+                  {meta.label}
+                </span>
+              </article>
             );
           })}
-        </IonRow>
-      </IonGrid>
+        </div>
 
-      <h2 className="bd-section-title">Legend</h2>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "0 8px 24px" }}>
-        <IonBadge color="success">Online / Active</IonBadge>
-        <IonBadge color="warning">Standby</IonBadge>
-        <IonBadge color="danger">Offline</IonBadge>
+        <section className="card-surface min-w-0 p-4 sm:p-6">
+          <h2 className="text-base font-bold tracking-tight">Legend</h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(Object.keys(STATE_META) as HardwareState[]).map((k) => (
+              <span
+                key={k}
+                className={`inline-flex rounded-full border px-3 py-1 text-[11px] font-bold uppercase tracking-wide ${STATE_META[k].badge}`}
+              >
+                {STATE_META[k].label}
+              </span>
+            ))}
+          </div>
+        </section>
       </div>
     </AppShell>
   );
