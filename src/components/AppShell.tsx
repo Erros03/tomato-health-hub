@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   IonApp,
@@ -17,7 +17,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import "../lib/ionic-setup";
+import { initIonic } from "../lib/ionic-setup";
 
 const NAV = [
   { to: "/", label: "Dashboard", note: "Yield monitoring" },
@@ -26,6 +26,10 @@ const NAV = [
 
 export function AppShell({ title, children }: { title: string; children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    initIonic();
+  }, []);
 
   return (
     <IonApp>
