@@ -54,7 +54,7 @@ function StatCard({
         : "text-foreground border-border bg-muted";
 
   return (
-    <article className="card-surface flex items-start gap-4 p-4 sm:p-5">
+    <article className="card-surface flex min-w-0 items-start gap-4 p-4 sm:p-5">
       <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl border ${toneClass}`}>
         <Icon className="h-5 w-5" />
       </span>
@@ -98,7 +98,7 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <section className="card-surface p-4 sm:p-6">
+    <section className="card-surface min-w-0 p-4 sm:p-6">
       <header className="mb-4">
         <h2 className="text-base font-bold tracking-tight sm:text-lg">{title}</h2>
         {subtitle && <p className="mt-0.5 text-xs text-muted-foreground">{subtitle}</p>}

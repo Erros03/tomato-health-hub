@@ -72,7 +72,7 @@ function SystemView() {
           {hardware.map((c) => {
             const meta = STATE_META[c.state];
             return (
-              <article key={c.key} className="card-surface p-4 sm:p-5">
+              <article key={c.key} className="card-surface min-w-0 p-4 sm:p-5">
                 <div className="flex items-center gap-2">
                   <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${meta.dot}`} />
                   <p className="min-w-0 truncate text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -90,7 +90,7 @@ function SystemView() {
           })}
         </div>
 
-        <section className="card-surface p-4 sm:p-6">
+        <section className="card-surface min-w-0 p-4 sm:p-6">
           <h2 className="text-base font-bold tracking-tight">Legend</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {(Object.keys(STATE_META) as HardwareState[]).map((k) => (
