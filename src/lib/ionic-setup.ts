@@ -9,4 +9,6 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/text-alignment.css";
 import "../theme/ionic.css";
 
-setupIonicReact({ mode: "md" });
+export function initIonic() {
+  setupIonicReact({ mode: "md" });
+}
