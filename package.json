@@ -9,10 +9,14 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ionic:serve": "vite dev",
+    "ionic:build": "vite build",
+    "serve": "vite dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@ionic/react": "^8.8.18",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -49,7 +53,9 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
+    "firebase": "^12.17.1",
     "input-otp": "^1.4.2",
+    "ionicons": "^8.1.0",
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
     "react-day-picker": "^9.14.0",

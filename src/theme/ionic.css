@@ -1,0 +1,179 @@
+/* BlightDetect+ agriculture theme: Leaf Green, Tomato Red, Alert Yellow, Dark Gray */
+:root {
+  --ion-color-primary: #2e7d32;
+  --ion-color-primary-rgb: 46, 125, 50;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #286e2c;
+  --ion-color-primary-tint: #438a47;
+
+  --ion-color-danger: #e53935;
+  --ion-color-danger-rgb: 229, 57, 53;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #ca322f;
+  --ion-color-danger-tint: #e94d49;
+
+  --ion-color-warning: #f6b93b;
+  --ion-color-warning-rgb: 246, 185, 59;
+  --ion-color-warning-contrast: #2f3437;
+  --ion-color-warning-contrast-rgb: 47, 52, 55;
+  --ion-color-warning-shade: #d8a334;
+  --ion-color-warning-tint: #f7c34f;
+
+  --ion-color-dark: #2f3437;
+  --ion-background-color: #f4f6f3;
+  --ion-toolbar-background: #2f3437;
+  --ion-toolbar-color: #ffffff;
+
+  --bd-leaf: #2e7d32;
+  --bd-tomato: #e53935;
+  --bd-alert: #f6b93b;
+  --bd-gray: #2f3437;
+}
+
+.bd-metric-card {
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(47, 52, 55, 0.08);
+  margin: 8px;
+}
+.bd-metric-value {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.bd-metric-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+.bd-accent-leaf {
+  color: var(--bd-leaf);
+}
+.bd-accent-tomato {
+  color: var(--bd-tomato);
+}
+.bd-accent-gray {
+  color: var(--bd-gray);
+}
+.bd-status-card {
+  border-radius: 16px;
+  margin: 8px;
+  border-left: 6px solid var(--bd-gray);
+}
+.bd-status-card.online {
+  border-left-color: var(--bd-leaf);
+}
+.bd-status-card.offline {
+  border-left-color: var(--bd-tomato);
+}
+.bd-status-card.standby {
+  border-left-color: var(--bd-alert);
+}
+.bd-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+.bd-section-title {
+  font-weight: 700;
+  color: var(--bd-gray);
+  margin: 18px 8px 4px;
+}
+
+/* ---- Modern responsive layout ---- */
+.bd-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4px 0 32px;
+}
+.bd-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 4px;
+}
+.bd-hero-title {
+  margin: 2px 0 0;
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--bd-gray);
+}
+.bd-live {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 999px;
+}
+.bd-grid {
+  display: grid;
+  gap: 4px;
+}
+.bd-grid-3 { grid-template-columns: 1fr; }
+.bd-grid-2 { grid-template-columns: 1fr; }
+.bd-grid-split { grid-template-columns: 1fr; }
+@media (min-width: 640px) {
+  .bd-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bd-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .bd-grid-split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+.bd-metric-card {
+  background: #ffffff;
+  border: 1px solid rgba(47, 52, 55, 0.07);
+  box-shadow: 0 8px 24px -14px rgba(47, 52, 55, 0.35);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.bd-metric-card:hover {
+  box-shadow: 0 14px 30px -16px rgba(47, 52, 55, 0.45);
+  transform: translateY(-1px);
+}
+.bd-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bd-gray);
+}
+.bd-accent-alert { color: var(--bd-alert); }
+.bd-chip-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.bd-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(47, 52, 55, 0.04);
+}
+.bd-chip-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+.bd-bar-row { margin-top: 12px; }
+.bd-bar-row ion-progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bd-bar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.bd-bar-pct {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bd-gray);
+}
