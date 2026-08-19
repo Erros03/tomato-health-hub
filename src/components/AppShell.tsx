@@ -134,7 +134,7 @@ export function AppShell({
                 <p className="hidden truncate text-xs text-muted-foreground sm:block">{subtitle}</p>
               )}
             </div>
-            <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1.5 text-xs font-semibold text-success">
+            <span className="inline-flex shrink-0 justify-self-end items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1.5 text-xs font-semibold text-success">
               <Activity className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Live stream</span>
               <span className="sm:hidden">Live</span>
