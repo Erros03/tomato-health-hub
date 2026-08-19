@@ -1,7 +1,6 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Activity, Cpu, LayoutDashboard, Leaf, Menu, X } from "lucide-react";
-import { initIonic } from "../lib/ionic-setup";
 
 const NAV = [
   { to: "/", label: "Dashboard", note: "Yield monitoring", icon: LayoutDashboard },
